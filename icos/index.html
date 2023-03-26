@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>test</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+<body style="background-color: #eaeef2;">
+  <div class="mx-auto" style="width: 600px;">
+    <div style="position: relative; height: 200px;">
+      <p class="text-center" style="position: absolute; bottom: 0; width: 100%; font-size: 36px;">名簿管理</p>
+    </div>
+    <div class="p-4 bg-white" style="border-radius: 5px;">
+      <div>
+        <p style="font-weight: bold; font-size: 18px">名簿一覧</p>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>名前</th>
+              <th>自己紹介</th>
+            </tr>
+          </thead>
+          <tbody id="output"></tbody>
+        </table>        
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=desert"></script> 
+  <script>
+    var xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.onreadystatechange = function() {
+      if (xmlhttp.readyState == 4) {
+        if (xmlhttp.status == 200) {
+          var data = JSON.parse(xmlhttp.responseText);
+          var elem = document.getElementById("output");
+          data.meibo.forEach((d) => {
+            const tr = document.createElement("tr");
+            elem.appendChild(tr)
+            const name = document.createElement("td");
+            name.textContent = d.NAME;
+            tr.appendChild(name);
+            const intro = document.createElement("td");
+            intro.textContent = d.INTRO;
+            tr.appendChild(intro);
+          });
+        } else {
+          alert("status = " + xmlhttp.status);
+        }
+      }
+    }
+    var url = "https://api-node.10h9ssvve5sf.jp-tok.codeengine.appdomain.cloud/meibo";
+    // var url = "http://localhost:8080/meibo";
+    xmlhttp.open("GET", url);
+    xmlhttp.send();
+  </script>
+</body>
+</html>

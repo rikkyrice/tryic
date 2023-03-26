@@ -1,5 +1,10 @@
 FROM node:15
 
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends && \
+    apt-get upgrade -y --allow-unauthenticated && \
+    apt-get clean -y
+
 # アプリケーションディレクトリを作成する
 WORKDIR /usr/src/app
 
