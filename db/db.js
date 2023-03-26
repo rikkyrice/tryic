@@ -1,5 +1,5 @@
 const ibm_db = require("ibm_db");
-const settings = require("../db/settings");
+const settings = require("./settings");
 
 process.env.DB2CODEPAGE = 1208;
 
