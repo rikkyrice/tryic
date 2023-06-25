@@ -7,19 +7,18 @@
   * @return このアクションの出力。この出力は、JSON オブジェクトでなければなりません。
   *
   */
-process.env['CLOUDANT_URL'] = 'https://apikey-v2-13tn8g8sfizmtlvsoxm8qhugdo2vb6a3kdhcamuoierm:c3222e8b3cca4230a27985d024b76c01@a4d87ca8-2659-4eb7-a51a-c179260cddcd-bluemix.cloudantnosqldb.appdomain.cloud';
-process.env['CLOUDANT_APIKEY'] = 'bEpXe6FixYweuNsgsiJNaag1lxf4A_LP_Vfr47wsjRf_';
+process.env['CLOUDANT_URL'] = '作成したCloudantの資格情報のうちURLを貼り付ける';
+process.env['CLOUDANT_APIKEY'] = '作成したCloudantの資格情報のうちAPI KEYを貼り付ける';
 
 const { CloudantV1 } = require('@ibm-cloud/cloudant');
 
 async function main(params) {
     const client = CloudantV1.newInstance({ serviceName: 'CLOUDANT' });
-    const DBNAME = 'test';
+    const DBNAME = 'meibo';
     const response = await client.postFind({
         db: DBNAME,
         selector: {},
-        fields: [ 'ID', 'NAME', 'INTRO' ],
-        limit: 50
+        fields: [ '_id', 'NAME', 'INTRO' ]
     });
     return {
         statusCode: 200,

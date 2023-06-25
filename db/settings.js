@@ -1,5 +1,5 @@
-exports.host = '19af6446-6171-4641-8aba-9dcff8e1b6ff.c1ogj3sd0tgtu0lqde00.databases.appdomain.cloud';
-exports.port = 30699;
-exports.dbname = 'bludb';
-exports.username = 'gmt17334';
-exports.password = 'OJPRvkj1HpXNunHW';
+exports.host = 'Db2のサービス資格情報のホスト名を貼り付ける';
+exports.port = Db2のサービス資格情報のポートを貼り付ける;
+exports.dbname = 'Db2のサービス資格情報のデータベース名を貼り付ける';
+exports.username = 'Db2のサービス資格情報のユーザー名を貼り付ける';
+exports.password = 'Db2のサービス資格情報のパスワードを貼り付ける';
