@@ -1,4 +1,4 @@
-FROM node:15.12.0-slim
+FROM node:16-slim
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends && \
