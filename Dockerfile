@@ -1,4 +1,4 @@
-FROM node:15.12.0-alpine
+FROM node:15.12.0-slim
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends && \
